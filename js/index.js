@@ -5,8 +5,8 @@ fetch('https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-ficti
     method: 'get',
   })
   .then(response => { return response.json(); })
-  .then(json => { 
-    updateBestSellers(json); 
+  .then(json => {
+    updateBestSellers(json);
     console.log(json);
   })
   .catch(error => {
@@ -20,18 +20,18 @@ function updateBestSellers(nytimesBestSellers) {
     var bookInfo = book.book_details[0];
     var lastWeekRank = book.rank_last_week || 'n/a';
     var weeksOnList = book.weeks_on_list || 'New this week!';
-    var listing = 
-        '<div id="' + book.rank + '" class="entry">' + 
-          '<p>' + 
-          '<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/387928/book%20placeholder.png" class="book-cover" id="cover-' + book.rank + '">' + 
-          '</p>' + 
+    var listing =
+        '<div id="' + book.rank + '" class="entry">' +
+          '<p>' +
+          '<img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/387928/book%20placeholder.png" class="book-cover" id="cover-' + book.rank + '">' +
+          '</p>' +
           '<h2><a href="' + book.amazon_product_url + '" target="_blank">' + bookInfo.title + '</a></h2>' +
           '<h4>By ' + bookInfo.author + '</h4>' +
           '<h4 class="publisher">' + bookInfo.publisher + '</h4>' +
-          '<p>' + bookInfo.description + '</p>' + 
+          '<p>' + bookInfo.description + '</p>' +
           '<div class="stats">' +
-            '<hr>' + 
-            '<p>Last Week: ' + lastWeekRank + '</p>' + 
+            '<hr>' +
+            '<p>Last Week: ' + lastWeekRank + '</p>' +
             '<p>Weeks on list: ' + weeksOnList + '</p>' +
           '</div>' +
         '</div>';
