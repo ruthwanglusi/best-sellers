@@ -44,8 +44,9 @@
 }
 
 #best-seller-titles {
-  max-width: 475px;
+  max-width: 90vw;
   margin: 120px auto;
+  display: grid;
 }
 
 #best-seller-titles a {
@@ -93,4 +94,13 @@
 #masthead img {
   -webkit-transition: 100ms;
   transition: 100ms;
+}
+
+@media(min-width:900px)
+{
+  #best-seller-titles
+  {
+    grid-template-columns: repeat(2,auto);
+    grid-column-gap: 10%;
+  }
 }
